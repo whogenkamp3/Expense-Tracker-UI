@@ -6,6 +6,8 @@ import java.util.Objects;
 
 public class MainFrame extends JFrame {
 
+    Login login = new Login();
+
     //title and body fonts used throughtout UI
     final private Font titleFont = new Font("Segoe print", Font.BOLD, 20);
     final private Font bodyFont = new Font("Segoe print", Font.PLAIN, 12);
@@ -55,7 +57,7 @@ public class MainFrame extends JFrame {
 
         JPanel managing_expenses_UI_Panel = new JPanel();
         managing_expenses_UI_Panel.add(title);
-        
+
         return managing_expenses_UI_Panel;
 
     }
@@ -100,7 +102,11 @@ public class MainFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 String username = usernameField.getText();
                 String password = new String(passwordField.getText());
-                if (Objects.equals(username, "hi") && Objects.equals(password, "hi")) {
+                
+                // Call the loginStatus method on the Login instance
+                boolean loginStatus = login.loginStatus(username, password);
+                
+                if (loginStatus) {
                     // Successful login, switch to the main UI panel
                     cardLayout.show(cardPanel, "main");
                 } else {
@@ -108,6 +114,7 @@ public class MainFrame extends JFrame {
                 }
             }
         });
+        
 
         loginPanel.add(northPanel);
         loginPanel.add(image);
