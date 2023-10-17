@@ -2,6 +2,22 @@
     "java.project.sourcePaths": ["src"],
     "java.project.outputPath": "bin",
     "java.project.referencedLibraries": [
-        "lib/**/*.jar"
+        "lib/**/*.jar",
+        "/Users/whogenkamp3/Desktop/mysql-connector-j-8.1.0/mysql-connector-j-8.1.0.jar"
+    ],
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "default",
+                "enableSsl": "Disabled"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 3306,
+            "driver": "MySQL",
+            "name": "Login",
+            "database": "expense_tracker_back_end",
+            "username": "root"
+        }
     ]
 }
