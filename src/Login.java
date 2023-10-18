@@ -34,14 +34,6 @@ public class Login {
     }
 
 
-    public static void main(String []args){
-        String username = "hi";
-        String password = "hi";
-
-        boolean login = loginStatus(username,password);
-        System.out.println(login);
-    }
-
 }
 
 

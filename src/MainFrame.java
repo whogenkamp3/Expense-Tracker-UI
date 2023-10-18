@@ -2,7 +2,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Objects;
+//import java.lang.invoke.ClassSpecializer.Factory;
+
 
 public class MainFrame extends JFrame {
 
@@ -22,9 +23,9 @@ public class MainFrame extends JFrame {
 
         //creating default frame
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(550, 300);
-        setMinimumSize(new Dimension(550, 500));
-        setMaximumSize(new Dimension(550, 500));
+        setSize(700, 550);
+        setMinimumSize(new Dimension(700, 550));
+        setMaximumSize(new Dimension(700, 550));
         setIconImage(logo.getImage());
 
         // Create the card layout and panel to switch between login and main UI
@@ -43,6 +44,8 @@ public class MainFrame extends JFrame {
         cardPanel.add(mainUIPanel, "main");
         cardPanel.add(managing_expenses_UI_Panel, "expense_management");
 
+        
+
         // Show the login panel initially
         cardLayout.show(cardPanel, "login");
 
@@ -54,15 +57,62 @@ public class MainFrame extends JFrame {
         JLabel title = new JLabel("Welcome to Lifebloods Expense Tracker Software");
 
 
+        // Create a JMenuBar
+        JMenuBar menuBar = new JMenuBar();
+    
+        // Create a JMenu for the dropdown menu
+        JMenu mainMenu = new JMenu("Menu");
+    
+        // Create JMenuItems for the dropdown menu
+        JMenuItem menuItem1 = new JMenuItem("Home Page");
+        JMenuItem menuItem2 = new JMenuItem("Item 2");
+        JMenuItem menuItem3 = new JMenuItem("Item 3");
+    
+        // Add ActionListeners to the menu items (if needed)
+        menuItem1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Perform action for Item 1
+                cardLayout.show(cardPanel, "main");
+            }
+        });
+    
+        menuItem2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Perform action for Item 2
+            }
+        });
+    
+        menuItem3.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Perform action for Item 3
+            }
+        });
+    
+        // Add menu items to the JMenu
+        mainMenu.add(menuItem1);
+        mainMenu.add(menuItem2);
+        mainMenu.add(menuItem3);
+    
+        // Add the JMenu to the JMenuBar
+        menuBar.add(mainMenu);
+
+
 
         JPanel managing_expenses_UI_Panel = new JPanel();
+        managing_expenses_UI_Panel.add(menuBar, BorderLayout.NORTH);
         managing_expenses_UI_Panel.add(title);
+        
 
         return managing_expenses_UI_Panel;
 
     }
 
     private JPanel createLoginPanel(ImageIcon logo) {
+
+
         JLabel usernameLabel = new JLabel("Username");
         usernameLabel.setFont(bodyFont);
         usernameField = new JTextField(15);
@@ -104,7 +154,7 @@ public class MainFrame extends JFrame {
                 String password = new String(passwordField.getText());
                 
                 // Call the loginStatus method on the Login instance
-                boolean loginStatus = login.loginStatus(username, password);
+                boolean loginStatus = Login.loginStatus(username, password);
                 
                 if (loginStatus) {
                     // Successful login, switch to the main UI panel
@@ -116,15 +166,17 @@ public class MainFrame extends JFrame {
         });
         
 
-        loginPanel.add(northPanel);
-        loginPanel.add(image);
-        loginPanel.add(formPanel);
-        loginPanel.add(centerPanel);
+        loginPanel.add(northPanel, BorderLayout.NORTH);
+        loginPanel.add(image, BorderLayout.CENTER);
+        loginPanel.add(formPanel, BorderLayout.SOUTH);
+        loginPanel.add(centerPanel, BorderLayout.CENTER);
+        
 
         return loginPanel;
     }
 
     private JPanel createMainUIPanel() {
+
         // Create the main UI panel
         JPanel mainPanel = new JPanel();
         mainPanel.setBackground(Color.LIGHT_GRAY);
@@ -136,7 +188,7 @@ public class MainFrame extends JFrame {
         JMenu mainMenu = new JMenu("Menu");
     
         // Create JMenuItems for the dropdown menu
-        JMenuItem menuItem1 = new JMenuItem("Item 1");
+        JMenuItem menuItem1 = new JMenuItem("Expense Management");
         JMenuItem menuItem2 = new JMenuItem("Item 2");
         JMenuItem menuItem3 = new JMenuItem("Item 3");
     
