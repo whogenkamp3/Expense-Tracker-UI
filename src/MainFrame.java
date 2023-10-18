@@ -122,6 +122,7 @@ public class MainFrame extends JFrame {
         passwordLabel.setFont(bodyFont);
         passwordField = new JPasswordField(15);
         passwordField.setFont(bodyFont);
+        
 
         JPanel formPanel = new JPanel();
         formPanel.add(usernameLabel);
@@ -132,6 +133,7 @@ public class MainFrame extends JFrame {
         JLabel title = new JLabel("Welcome to Lifebloods Expense Tracker Software");
         title.setFont(titleFont);
         JLabel image = new JLabel();
+        JLabel space = new JLabel("           ");
         image.setIcon(logo);
         image.setBorder(BorderFactory.createLineBorder(Color.black));
 
@@ -168,8 +170,10 @@ public class MainFrame extends JFrame {
 
         loginPanel.add(northPanel, BorderLayout.NORTH);
         loginPanel.add(image, BorderLayout.CENTER);
+        loginPanel.add(space, BorderLayout.CENTER);
         loginPanel.add(formPanel, BorderLayout.SOUTH);
-        loginPanel.add(centerPanel, BorderLayout.CENTER);
+        //loginPanel.add(space, BorderLayout.CENTER);
+        loginPanel.add(centerPanel, BorderLayout.CENTER);  
         
 
         return loginPanel;

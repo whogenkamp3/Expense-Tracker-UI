@@ -9,7 +9,7 @@ public class Login {
         
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            String dbURL = "jdbc:mysql://localhost:3306/expense_tracker_back_end";
+            String dbURL = "jdbc:mysql://localhost:3306/expense_tracker_backend";
             Connection dbConnection = DriverManager.getConnection(dbURL, "root", "hkldDD3@78");
 
             PreparedStatement preparedStatement = dbConnection.prepareStatement(SQL);
