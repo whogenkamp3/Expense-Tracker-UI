@@ -111,19 +111,24 @@ public class MainFrame extends JFrame {
 
     private JPanel createLoginPanel(ImageIcon logo) {
 
-
+        //creating username JLabel and setting font
         JLabel usernameLabel = new JLabel("Username");
         usernameLabel.setFont(bodyFont);
+
+        //creating username textfield and setting font
         usernameField = new JTextField(15);
         usernameField.setFont(bodyFont);
-
+        
+        //creating password JLabel and setting font
         JLabel passwordLabel = new JLabel("Password");
         passwordLabel.setFont(bodyFont);
+
+        //creating password textfield and setting font
         passwordField = new JPasswordField(15);
         passwordField.setFont(bodyFont);
         
 
-        JPanel formPanel = new JPanel();
+        JPanel formPanel = new JPanel(new GridBagLayout());
         formPanel.add(usernameLabel);
         formPanel.add(usernameField);
         formPanel.add(passwordLabel);
@@ -132,7 +137,6 @@ public class MainFrame extends JFrame {
         JLabel title = new JLabel("Welcome to Lifebloods Expense Tracker Software");
         title.setFont(titleFont);
         JLabel image = new JLabel();
-        JLabel space = new JLabel("           ");
         image.setIcon(logo);
         image.setBorder(BorderFactory.createLineBorder(Color.black));
 
@@ -167,18 +171,19 @@ public class MainFrame extends JFrame {
         });
         
 
-        loginPanel.add(northPanel, BorderLayout.NORTH);
-        loginPanel.add(image, BorderLayout.CENTER);
-        loginPanel.add(space, BorderLayout.CENTER);
-        loginPanel.add(formPanel, BorderLayout.SOUTH);
-        //loginPanel.add(space, BorderLayout.CENTER);
-        loginPanel.add(centerPanel, BorderLayout.CENTER);  
+        loginPanel.add(northPanel);
+        loginPanel.add(image);
+        loginPanel.add(formPanel);
+        loginPanel.add(centerPanel);  
         
 
         return loginPanel;
     }
 
     private JPanel createMainUIPanel() {
+
+
+        
 
         // Create the main UI panel
         JPanel mainPanel = new JPanel();
@@ -225,9 +230,12 @@ public class MainFrame extends JFrame {
     
         // Add the JMenu to the JMenuBar
         menuBar.add(mainMenu);
+
+        
     
         // Set the JMenuBar for the main panel
         mainPanel.add(menuBar);
+
     
         // Add other components or content to the main UI panel as needed
         JLabel welcomeLabel = new JLabel("Expense Tracker");
